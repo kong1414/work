@@ -19,7 +19,7 @@ spring:
       transaction-query-timeout: 6000 #事务查询超时时间
       remove-abandoned-timeout: 1800 #关闭空闲连接超时时间
       filter-class-names: stat
-      filters: stat,config
+      filters: stat,wall,log4j
 
 devtools:
   restart:

@@ -24,11 +24,4 @@ public interface SysDeptMapper extends Mapper<SysDeptDO> {
      * @return
      */
     public Integer getMaxSort(Integer level);
-
-    /**
-     * 新增部门
-     *
-     * @param sysDeptDO
-     */
-    public void create(SysDeptDO sysDeptDO);
 }
