@@ -4,7 +4,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "sys_acl_module")
-public class SysAclModule {
+public class SysAclModuleDO {
     /**
      * 权限模块id
      */

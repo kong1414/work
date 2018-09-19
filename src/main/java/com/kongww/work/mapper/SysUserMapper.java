@@ -1,7 +1,7 @@
 package com.kongww.work.mapper;
 
-import com.kongww.work.pojo.entity.SysUser;
+import com.kongww.work.pojo.entity.SysUserDO;
 import tk.mybatis.mapper.common.Mapper;
 
-public interface SysUserMapper extends Mapper<SysUser> {
+public interface SysUserMapper extends Mapper<SysUserDO> {
 }

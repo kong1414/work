@@ -3,8 +3,8 @@ package com.kongww.work.pojo.entity;
 import java.util.Date;
 import javax.persistence.*;
 
-@Table(name = "sys_role_user")
-public class SysRoleUser {
+@Table(name = "sys_role_acl")
+public class SysRoleAclDO {
     @Id
     @Column(name = "pk_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT LAST_INSERT_ID()")
@@ -17,10 +17,10 @@ public class SysRoleUser {
     private Integer roleId;
 
     /**
-     * 用户id
+     * 权限id
      */
-    @Column(name = "user_id")
-    private Integer userId;
+    @Column(name = "acl_id")
+    private Integer aclId;
 
     /**
      * 创建日期
@@ -35,7 +35,7 @@ public class SysRoleUser {
     private String userCreate;
 
     /**
-     * 修改日期
+     * 修改时间
      */
     @Column(name = "gmt_modified")
     private Date gmtModified;
@@ -79,21 +79,21 @@ public class SysRoleUser {
     }
 
     /**
-     * 获取用户id
+     * 获取权限id
      *
-     * @return user_id - 用户id
+     * @return acl_id - 权限id
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getAclId() {
+        return aclId;
     }
 
     /**
-     * 设置用户id
+     * 设置权限id
      *
-     * @param userId 用户id
+     * @param aclId 权限id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setAclId(Integer aclId) {
+        this.aclId = aclId;
     }
 
     /**
@@ -133,18 +133,18 @@ public class SysRoleUser {
     }
 
     /**
-     * 获取修改日期
+     * 获取修改时间
      *
-     * @return gmt_modified - 修改日期
+     * @return gmt_modified - 修改时间
      */
     public Date getGmtModified() {
         return gmtModified;
     }
 
     /**
-     * 设置修改日期
+     * 设置修改时间
      *
-     * @param gmtModified 修改日期
+     * @param gmtModified 修改时间
      */
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;

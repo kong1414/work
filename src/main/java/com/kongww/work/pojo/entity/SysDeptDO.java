@@ -4,7 +4,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "sys_dept")
-public class SysDept {
+public class SysDeptDO {
     /**
      * 部门id
      */

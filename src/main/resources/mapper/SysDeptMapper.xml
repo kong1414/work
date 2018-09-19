@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kongww.work.mapper.SysDeptMapper">
-    <resultMap id="BaseResultMap" type="com.kongww.work.pojo.entity.SysDept">
+    <resultMap id="BaseResultMap" type="com.kongww.work.pojo.entity.SysDeptDO">
         <!--
           WARNING - @mbg.generated
         -->
@@ -17,4 +17,15 @@
         <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
         <result column="user_modified" jdbcType="VARCHAR" property="userModified"/>
     </resultMap>
+
+    <select id="queryToMap" resultType="java.util.Map">
+		SELECT d.pk_id id,d.name name,d.fk_parent parentId,d.sort sort,d.level level,d.gmt_create gmtCreate
+		FROM sys_dept d WHERE d.enabled=1
+		ORDER BY d.level,d.sort desc
+	</select>
+
+    <select id="getMaxSort" parameterType="Integer" resultType="Integer">
+		select MAX(sort) from sys_dept where level = #{level} and enabled = 1
+	</select>
+
 </mapper>
