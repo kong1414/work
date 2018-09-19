@@ -1,6 +1,6 @@
 package com.kongww.work.pojo.bo;
 
-import com.kongww.work.pojo.entity.User;
+import com.kongww.work.pojo.vo.UserVO;
 
 /**
  * @Description:
@@ -13,7 +13,7 @@ public class LoginResultBO {
 
     private String msg;
 
-    private User user;
+    private UserVO userVO;
 
     public boolean isSuccess() {
         return success;
@@ -31,11 +31,11 @@ public class LoginResultBO {
         this.msg = msg;
     }
 
-    public User getUser() {
-        return user;
+    public UserVO getUserVO() {
+        return userVO;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserVO(UserVO userVO) {
+        this.userVO = userVO;
     }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kongww.work.mapper.SysAclMapper">
+    <resultMap id="BaseResultMap" type="com.kongww.work.pojo.entity.SysAcl">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="pk_id" jdbcType="INTEGER" property="pkId"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="acl_module_id" jdbcType="INTEGER" property="aclModuleId"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="user_cteate" jdbcType="VARCHAR" property="userCteate"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="user_modified" jdbcType="VARCHAR" property="userModified"/>
+    </resultMap>
+</mapper>
