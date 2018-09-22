@@ -72,36 +72,36 @@
             <!-- 数据库表主键 -->
             <generatedKey column="pk_id" sqlStatement="Mysql"/>
         </table>
-        <table tableName="sys_acl">
-            <property name="useActualColumnNames" value="false"/>
-            <!-- 数据库表主键 -->
-            <generatedKey column="pk_id" sqlStatement="Mysql"/>
-        </table>
-        <table tableName="sys_acl_module">
-            <property name="useActualColumnNames" value="false"/>
-            <!-- 数据库表主键 -->
-            <generatedKey column="pk_id" sqlStatement="Mysql"/>
-        </table>
-        <table tableName="sys_dept">
-            <property name="useActualColumnNames" value="false"/>
-            <!-- 数据库表主键 -->
-            <generatedKey column="pk_id" sqlStatement="Mysql"/>
-        </table>
-        <table tableName="sys_role">
-            <property name="useActualColumnNames" value="false"/>
-            <!-- 数据库表主键 -->
-            <generatedKey column="pk_id" sqlStatement="Mysql"/>
-        </table>
-        <table tableName="sys_role_acl">
-            <property name="useActualColumnNames" value="false"/>
-            <!-- 数据库表主键 -->
-            <generatedKey column="pk_id" sqlStatement="Mysql"/>
-        </table>
-        <table tableName="sys_role_user">
-            <property name="useActualColumnNames" value="false"/>
-            <!-- 数据库表主键 -->
-            <generatedKey column="pk_id" sqlStatement="Mysql"/>
-        </table>
+        <!--<table tableName="sys_acl">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+        <!--<table tableName="sys_acl_module">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+        <!--<table tableName="sys_dept">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+        <!--<table tableName="sys_role">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+        <!--<table tableName="sys_role_acl">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+        <!--<table tableName="sys_role_user">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
     </context>
 
 </generatorConfiguration>

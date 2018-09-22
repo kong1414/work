@@ -84,6 +84,15 @@ public class SysUserDO {
      */
     private String token;
 
+    @Column(name = "token_take_effect_time")
+    private Date tokenTakeEffectTime;
+
+    @Column(name = "token_age")
+    private Integer tokenAge;
+
+    @Column(name = "pw_errors_count")
+    private Integer pwErrorsCount;
+
     /**
      * 获取用户id
      *
@@ -334,5 +343,47 @@ public class SysUserDO {
      */
     public void setToken(String token) {
         this.token = token == null ? null : token.trim();
+    }
+
+    /**
+     * @return token_take_effect_time
+     */
+    public Date getTokenTakeEffectTime() {
+        return tokenTakeEffectTime;
+    }
+
+    /**
+     * @param tokenTakeEffectTime
+     */
+    public void setTokenTakeEffectTime(Date tokenTakeEffectTime) {
+        this.tokenTakeEffectTime = tokenTakeEffectTime;
+    }
+
+    /**
+     * @return token_age
+     */
+    public Integer getTokenAge() {
+        return tokenAge;
+    }
+
+    /**
+     * @param tokenAge
+     */
+    public void setTokenAge(Integer tokenAge) {
+        this.tokenAge = tokenAge;
+    }
+
+    /**
+     * @return pw_errors_count
+     */
+    public Integer getPwErrorsCount() {
+        return pwErrorsCount;
+    }
+
+    /**
+     * @param pwErrorsCount
+     */
+    public void setPwErrorsCount(Integer pwErrorsCount) {
+        this.pwErrorsCount = pwErrorsCount;
     }
 }

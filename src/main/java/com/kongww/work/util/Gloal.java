@@ -73,7 +73,7 @@ public final class Gloal {
     /**
      * token有效时长（秒）
      */
-    public static final Long TOKEN_AGE = 1000L * 60 * 30;
+    public static final Integer TOKEN_AGE = Math.toIntExact(1000L * 60 * 30);
 
     public static final String Wrap = "";
 

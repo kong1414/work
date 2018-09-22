@@ -1,6 +1,9 @@
 package com.kongww.work.pojo.vo;
 
 
+import javax.persistence.Column;
+import java.util.Date;
+
 /**
  * @Author: QiuGuanLin
  * @Description:
@@ -44,6 +47,43 @@ public class UserVO {
      */
     private String remark;
 
+
+    private String token;
+
+    private Integer pwErrorsCount;
+
+    public UserVO() {
+
+    }
+
+
+    public UserVO(Integer id, String name, String workNo, String mail, String mobilephone, Integer deptId, String status, String remark, Integer pwErrorsCount) {
+        Id = id;
+        this.name = name;
+        this.workNo = workNo;
+        this.mail = mail;
+        this.mobilephone = mobilephone;
+        this.deptId = deptId;
+        this.status = status;
+        this.remark = remark;
+        this.pwErrorsCount = pwErrorsCount;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Integer getPwErrorsCount() {
+        return pwErrorsCount;
+    }
+
+    public void setPwErrorsCount(Integer pwErrorsCount) {
+        this.pwErrorsCount = pwErrorsCount;
+    }
 
     public Integer getId() {
         return Id;

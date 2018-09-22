@@ -9,18 +9,34 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 public class LoginRequest {
 
-    @NotBlank(message = "{login.name.empty}")
-    private String name;
+    private String account;
+    /**
+     * 登陆类型
+     * 0为全部
+     * 1为姓名登陆
+     * 2为学号工号登陆
+     * 3为邮箱登陆
+     * 4为电子邮件登陆
+     */
+    private int loginType;
 
-    @NotBlank(message = "{login.password.empty}")
+    @NotBlank(message = "密码不能为空")
     private String password;
 
-    public String getName() {
-        return name;
+    public int getLoginType() {
+        return loginType;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLoginType(int loginType) {
+        this.loginType = loginType;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getPassword() {
@@ -30,5 +46,4 @@ public class LoginRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }
