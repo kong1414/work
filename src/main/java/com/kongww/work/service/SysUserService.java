@@ -4,6 +4,7 @@ import com.kongww.work.pojo.bo.LoginResultBO;
 import com.kongww.work.pojo.entity.SysDeptDO;
 import com.kongww.work.pojo.entity.SysUserDO;
 import com.kongww.work.pojo.vo.ResultVO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @Description: 用户service
  * @Date: 23:36 2018/9/22
  */
+@Service
 public interface SysUserService {
 
     /**
