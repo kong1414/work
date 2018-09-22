@@ -7,19 +7,44 @@ spring:
   datasource:
     url: jdbc:mysql://120.78.136.84:3306/school?useSSL=false&characterEncoding=utf8
     username: school
-    password: ABCabc-123
+    password: LU3BG8pnWZ7bUT7vvjqHwcDGPRwTwzs44nI2Qigc4HgDuh2bZpVXJxUIf///kSs/tiKROmPOxeEKrds6xBS4mw==
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-
     druid:
       initial-size: 8 #初始化连接大小
       min-idle: 5 #最小空闲连接数
-      max-active: 10 #最大连接数
+      max-active: 30 #最大连接数
       query-timeout: 6000 #查询超时时间
       transaction-query-timeout: 6000 #事务查询超时时间
       remove-abandoned-timeout: 1800 #关闭空闲连接超时时间
-      filter-class-names: stat
-      filters: stat,wall,log4j
+      web-stat-filter:
+        enabled: true
+        exclusions: /druid/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico,
+      filter:
+        stat:
+          enabled: true
+          db-type: mysql # 打印慢sql
+          log-slow-sql: true # 超过200毫秒即为慢sql
+        wall:
+          enabled: true
+          db-type: mysql
+          log-violation: true # 对认定的攻击sql进行日志输出
+          throw-exception: true # 对认定的攻击sql抛出异常
+          config:
+            alter-table-allow: false # 是否允许下述操作
+            truncate-allow: false
+            drop-table-allow: false
+            update-where-none-check: true
+            metadata-allow: false # metadata会暴露数据的表结构
+        config:
+          enabled: true
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: admin
+      connection-properties: config.decrypt=true;config.decrypt.key=${public-key}
+
+public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMZrfwJwbN82nO3UgHI8ARp+kt+ghqiV/22Fxm9zqcmkkQGaxF/939vrR0MvpplHIwMstBrvBQgBXOMJvlixXlcCAwEAAQ==
 
 devtools:
   restart:

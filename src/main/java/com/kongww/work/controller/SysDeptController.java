@@ -55,6 +55,21 @@ public class SysDeptController {
     }
 
     /**
+     * 删除部门
+     * 如果部门有子节点 则无法删除
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/delete")
+    public ResultVO delete(@RequestParam Integer id) {
+        String userName = "admin";
+        // TODO: 2018/9/22 获取用户名
+        ResultVO resultVO = sysDeptService.delete(id, userName);
+        return resultVO;
+    }
+
+    /**
      * 获取部门树
      *
      * @return

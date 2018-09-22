@@ -24,4 +24,13 @@ public interface SysDeptMapper extends Mapper<SysDeptDO> {
      * @return
      */
     public Integer getMaxSort(Integer level);
+
+
+    /**
+     * 获取该部门下的子节点数量
+     *
+     * @param id
+     * @return
+     */
+    public Integer getChildCount(Integer id);
 }

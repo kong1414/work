@@ -32,7 +32,7 @@ public class SysDeptServiceImpl implements SysDeptService {
         SysDeptDO sysDeptDO = new SysDeptDO();
 
         sysDeptDO.setName(deptName);
-        sysDeptDO.setPkId(parentId);
+        sysDeptDO.setFkParent(parentId);
         sysDeptDO.setUserCreate(userName);
         sysDeptDO.setGmtCreate(new Date());
         sysDeptDO.setEnabled((byte) 1);
@@ -65,9 +65,12 @@ public class SysDeptServiceImpl implements SysDeptService {
     }
 
     @Override
-    public ResultVO<SysDeptDO> delete(Integer DeptId, String userName) {
-        // TODO: 2018/9/19
-        return null;
+    public ResultVO delete(Integer DeptId, String userName) {
+        if (sysDeptMapper.getChildCount(DeptId) > 0) {
+            return new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "该部门下还有其他部门");
+        }
+        sysDeptMapper.deleteByPrimaryKey(DeptId);
+        return new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "删除成功");
     }
 
     @Override
@@ -83,7 +86,7 @@ public class SysDeptServiceImpl implements SysDeptService {
         // 调用方法变成树
         DeptNode root = TreeUtil.parseDeptTree(deptMap);
         System.out.println(root);
-        return new ResultVO(200, root, "");
+        return new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), root, "");
     }
 
 }

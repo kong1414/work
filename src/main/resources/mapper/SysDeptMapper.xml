@@ -28,4 +28,8 @@
 		select MAX(sort) from sys_dept where level = #{level} and enabled = 1
 	</select>
 
+    <select id="getChildCount" parameterType="Integer" resultType="Integer">
+        select count(1) from sys_dept where fk_parent= #{id} and enabled = 1
+    </select>
+
 </mapper>
