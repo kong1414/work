@@ -53,10 +53,10 @@ public interface SysDeptService {
      * 删除部门
      * 需要注意内部是否有子节点
      *
-     * @param DeptId
+     * @param deptId
      * @return
      */
-    public ResultVO<SysDeptDO> delete(Integer DeptId, String userName);
+    public ResultVO<SysDeptDO> delete(Integer deptId, String userName);
 
     /**
      * 部门名称模糊查询

@@ -65,11 +65,11 @@ public class SysDeptServiceImpl implements SysDeptService {
     }
 
     @Override
-    public ResultVO delete(Integer DeptId, String userName) {
-        if (sysDeptMapper.getChildCount(DeptId) > 0) {
+    public ResultVO delete(Integer deptId, String userName) {
+        if (sysDeptMapper.getChildCount(deptId) > 0) {
             return new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "该部门下还有其他部门");
         }
-        sysDeptMapper.deleteByPrimaryKey(DeptId);
+        sysDeptMapper.deleteByPrimaryKey(deptId);
         return new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "删除成功");
     }
 

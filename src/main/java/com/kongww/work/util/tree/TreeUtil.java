@@ -5,7 +5,7 @@ import java.util.*;
 public class TreeUtil {
     public static DeptNode parseDeptTree(List<Map<String, Object>> dataList) {
         // 用于暂存节点信息的map
-        Map<Integer, DeptNode> DeptNodeMap = new HashMap<>();
+        Map<Integer, DeptNode> deptNodeMap = new HashMap<>();
         // 根节点
         DeptNode root = null;
 
@@ -29,18 +29,18 @@ public class TreeUtil {
             deptNode.setGmtCreate((Date) dataRecord.get("gmtCreate"));
 
             // 把节点放入map中
-            DeptNodeMap.put(deptNode.getId(), deptNode);
+            deptNodeMap.put(deptNode.getId(), deptNode);
         }
 
         // 构造无序的多叉树
-        for (Iterator<Map.Entry<Integer, DeptNode>> it = DeptNodeMap.entrySet().iterator(); ((Iterator) it).hasNext(); ) {
+        for (Iterator<Map.Entry<Integer, DeptNode>> it = deptNodeMap.entrySet().iterator(); ((Iterator) it).hasNext(); ) {
             DeptNode deptNode = it.next().getValue();
 
             if (deptNode.getParent().getId() == null || deptNode.getParent().getId().equals(0)) {// 取得根节点，单独存放
                 root = deptNode;
             } else {
                 // 所有子节点，找到自身父节点并加入父节点的child集合
-                (DeptNodeMap.get(deptNode.getParent().getId())).addChild(deptNode);
+                (deptNodeMap.get(deptNode.getParent().getId())).addChild(deptNode);
             }
 
         }
