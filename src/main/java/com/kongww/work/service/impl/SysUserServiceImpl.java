@@ -13,10 +13,7 @@ import com.kongww.work.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author: QiuGuanLin
@@ -136,5 +133,11 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public SysUserDO getMobilephone() {
         return null;
+    }
+
+    @Override
+    public ResultVO queryList(String keyWord) {
+        List<String> list = sysUserMapper.selectAccount(keyWord);
+        return new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), list, "");
     }
 }

@@ -11,4 +11,12 @@ import java.util.List;
 public interface SysUserMapper extends Mapper<SysUserDO> {
 
     public List<SysUserDO> list(@Param("keyWord") String keyWord);
+
+    /**
+     * 搜索能作为账户名字的字段
+     *
+     * @param keyWord
+     * @return
+     */
+    public List<String> selectAccount(@Param("keyWord") String keyWord);
 }

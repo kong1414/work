@@ -126,4 +126,11 @@ public interface SysUserService {
      */
     SysUserDO getMobilephone();
 
+    /**
+     * 用来查找所以符合关键字的学号姓名手机邮箱等
+     *
+     * @param keyWord
+     * @return
+     */
+    ResultVO queryList(String keyWord);
 }

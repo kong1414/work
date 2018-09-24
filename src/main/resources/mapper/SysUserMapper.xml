@@ -41,4 +41,33 @@
             )
         </if>
     </select>
+    <select id="selectAccount" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT
+          NAME account
+        FROM
+          sys_user
+        WHERE
+          sys_user.`name` LIKE '%${keyWord}%'
+        UNION
+          SELECT
+            work_no account
+          FROM
+            sys_user
+          WHERE
+            work_no LIKE '%${keyWord}%'
+        UNION
+          SELECT
+            mail account
+          FROM
+            sys_user
+          WHERE
+          mail LIKE '%${keyWord}%'
+        UNION
+          SELECT
+            mobilephone account
+          FROM
+            sys_user
+          WHERE
+            mobilephone LIKE '%${keyWord}%'
+    </select>
 </mapper>

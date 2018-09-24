@@ -60,6 +60,21 @@ public class SysUserController {
     }
 
     /**
+     * 登陆页查询账户
+     *
+     * @param keyWord
+     * @return
+     */
+    @RequestMapping("/queryList")
+    public ResultVO<Object> queryList(@RequestParam(defaultValue = "") String keyWord) {
+        if ("".equals(keyWord) || keyWord == null) {
+            return new ResultVO<>(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "");
+        }
+        ResultVO result = sysUserService.queryList(keyWord);
+        return result;
+    }
+
+    /**
      * 登陆
      *
      * @param loginRequest
