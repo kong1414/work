@@ -67,40 +67,42 @@
                              type="XMLMAPPER"/>
 
         <!-- table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 -->
-        <table tableName="sys_user">
+        <!--<table tableName="acl">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+        <!--<table tableName="acl">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+        <!--<table tableName="acl_module">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+        <!--<table tableName="order_list">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+        <table tableName="warehouse">
             <property name="useActualColumnNames" value="false"/>
-            <!-- 数据库表主键 -->
-            <generatedKey column="pk_id" sqlStatement="Mysql"/>
+            <generatedKey column="id" sqlStatement="Mysql"/>
         </table>
-        <!--<table tableName="sys_acl">-->
+        <!--<table tableName="user">-->
         <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
-        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
         <!--</table>-->
-        <!--<table tableName="sys_acl_module">-->
+        <!--<table tableName="stock_list">-->
         <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
-        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
         <!--</table>-->
-        <!--<table tableName="sys_dept">-->
+        <!--<table tableName="product">-->
         <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
-        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
         <!--</table>-->
-        <!--<table tableName="sys_role">-->
+        <!--<table tableName="role">-->
         <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
-        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
-        <!--</table>-->
-        <!--<table tableName="sys_role_acl">-->
-        <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
-        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
-        <!--</table>-->
-        <!--<table tableName="sys_role_user">-->
-        <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
-        <!--<generatedKey column="pk_id" sqlStatement="Mysql"/>-->
+        <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
         <!--</table>-->
     </context>
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kongww.work.mapper.OrderListMapper">
+    <resultMap id="BaseResultMap" type="com.kongww.work.pojo.entity.OrderListDO">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="product_id" jdbcType="INTEGER" property="productId"/>
+        <result column="quantity" jdbcType="INTEGER" property="quantity"/>
+        <result column="unit_price" jdbcType="DECIMAL" property="unitPrice"/>
+        <result column="discount" jdbcType="DOUBLE" property="discount"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="order_time" jdbcType="TIMESTAMP" property="orderTime"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="confirmer_id" jdbcType="INTEGER" property="confirmerId"/>
+        <result column="confirmer_name" jdbcType="VARCHAR" property="confirmerName"/>
+        <result column="confirmer_time" jdbcType="TIMESTAMP" property="confirmerTime"/>
+    </resultMap>
+</mapper>

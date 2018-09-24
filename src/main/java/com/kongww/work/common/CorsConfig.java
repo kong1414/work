@@ -9,7 +9,7 @@ import org.springframework.web.filter.CorsFilter;
 
 /**
  * @Author: QiuGuanLin
- * @Description:
+ * @Description: 跨域设置
  * @Date: 12:02 2018/9/24
  */
 @Configuration
