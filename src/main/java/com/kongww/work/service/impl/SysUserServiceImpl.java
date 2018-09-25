@@ -1,12 +1,12 @@
 package com.kongww.work.service.impl;
 
 import com.kongww.work.mapper.SysUserMapper;
-import com.kongww.work.pojo.bo.LoginResultBO;
+import com.kongww.work.pojo.bo.SysLoginResultBO;
 import com.kongww.work.pojo.entity.SysDeptDO;
 import com.kongww.work.pojo.entity.SysUserDO;
 import com.kongww.work.pojo.vo.HttpCodeEnum;
 import com.kongww.work.pojo.vo.ResultVO;
-import com.kongww.work.pojo.vo.UserVO;
+import com.kongww.work.pojo.vo.SysUserVO;
 import com.kongww.work.service.SysUserService;
 import com.kongww.work.util.Gloal;
 import com.kongww.work.util.JWTUtil;
@@ -28,18 +28,18 @@ public class SysUserServiceImpl implements SysUserService {
 
 
     @Override
-    public LoginResultBO login(String username, String password) {
+    public SysLoginResultBO login(String username, String password) {
         return null;
     }
 
     @Override
-    public LoginResultBO loginByName(String name, String password) {
+    public SysLoginResultBO loginByName(String name, String password) {
         return null;
     }
 
     @Override
-    public LoginResultBO loginByWorkNo(String workNo, String password) {
-        LoginResultBO result = new LoginResultBO();
+    public SysLoginResultBO loginByWorkNo(String workNo, String password) {
+        SysLoginResultBO result = new SysLoginResultBO();
         boolean isSuccess = false;
 
         SysUserDO loginUser = new SysUserDO();
@@ -56,14 +56,14 @@ public class SysUserServiceImpl implements SysUserService {
         result.setSuccess(isSuccess);
         if (isSuccess) {
             result.setMsg("登陆成功");
-            UserVO userVO = new UserVO(user.getPkId(), user.getName(), user.getWorkNo(), user.getMail(), user.getMobilephone(), user.getDeptId(), user.getStatus(), user.getRemark(), user.getPwErrorsCount());
+            SysUserVO sysUserVO = new SysUserVO(user.getPkId(), user.getName(), user.getWorkNo(), user.getMail(), user.getMobilephone(), user.getDeptId(), user.getStatus(), user.getRemark(), user.getPwErrorsCount());
 
             // 设置token
             Map<String, Object> claims = new HashMap<String, Object>();
-            claims.put(Gloal.TOKEN_USER_INFO_KEY, userVO);
+            claims.put(Gloal.TOKEN_USER_INFO_KEY, sysUserVO);
             String token = JWTUtil.createJavaWebToken(claims);
-            userVO.setToken(token);
-            result.setUserVO(userVO);
+            sysUserVO.setToken(token);
+            result.setSysUserVO(sysUserVO);
 
             // 更新数据库
             SysUserDO updateUser = new SysUserDO();
@@ -80,12 +80,12 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public LoginResultBO loginByMail(String mail, String password) {
+    public SysLoginResultBO loginByMail(String mail, String password) {
         return null;
     }
 
     @Override
-    public LoginResultBO loginByMobilephone(String mobilephone, String password) {
+    public SysLoginResultBO loginByMobilephone(String mobilephone, String password) {
         return null;
     }
 

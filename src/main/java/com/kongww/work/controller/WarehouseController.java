@@ -30,8 +30,8 @@ public class WarehouseController {
      */
     @RequestMapping("/create")
     public ResultVO<Object> create(@RequestParam WarehouseDO warehouseDO) {
-        warehouseService.create(warehouseDO);
-        return new ResultVO<>(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "新增仓库成功");
+
+        return warehouseService.create(warehouseDO);
     }
 
     /**
@@ -42,8 +42,8 @@ public class WarehouseController {
      */
     @RequestMapping("/delete")
     public ResultVO<Object> delete(Integer id) {
-        warehouseService.delete(id);
-        return new ResultVO<>(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "删除成功");
+
+        return warehouseService.delete(id);
     }
 
     /**
@@ -58,8 +58,8 @@ public class WarehouseController {
         if (warehouseDO.getId() == null || warehouseDO.getId() == 0) {
             return new ResultVO<>(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "出错");
         }
-        warehouseService.update(warehouseDO);
-        return new ResultVO<>(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "更新成功");
+
+        return warehouseService.update(warehouseDO);
     }
 
     /**

@@ -1,71 +1,41 @@
 package com.kongww.work.pojo.vo;
 
+import java.util.Date;
 
 /**
  * @Author: QiuGuanLin
  * @Description:
- * @Date: 20:28 2018/9/18
+ * @Date: 8:52 2018/9/25
  */
 public class UserVO {
-
-    /**
-     * 用户id
-     */
     private Integer id;
-    /**
-     * 姓名
-     */
-    private String name;
-    /**
-     * 学号或者工号
-     */
-    private String workNo;
 
     /**
-     * 邮箱
+     * 用户名
      */
-    private String mail;
+    private String username;
 
     /**
      * 手机号
      */
-    private String mobilephone;
-    /**
-     * 用户所在部门
-     */
-    private Integer deptId;
+    private String mobile;
 
     /**
-     * 状态（1正常,0冻结）
+     * 电子邮箱
      */
-    private String status;
+    private String email;
 
     /**
      * 备注
      */
     private String remark;
 
+    /**
+     * 最后一次登录时间
+     */
+    private Date lastLoginTime;
 
     private String token;
-
-    private Integer pwErrorsCount;
-
-    public UserVO() {
-
-    }
-
-
-    public UserVO(Integer id, String name, String workNo, String mail, String mobilephone, Integer deptId, String status, String remark, Integer pwErrorsCount) {
-        this.id = id;
-        this.name = name;
-        this.workNo = workNo;
-        this.mail = mail;
-        this.mobilephone = mobilephone;
-        this.deptId = deptId;
-        this.status = status;
-        this.remark = remark;
-        this.pwErrorsCount = pwErrorsCount;
-    }
 
     public String getToken() {
         return token;
@@ -75,11 +45,19 @@ public class UserVO {
         this.token = token;
     }
 
-    public Integer getPwErrorsCount() {
-        return pwErrorsCount;
-    }
+    /**
+     * 密码错误次数
+     */
+    private Integer pwErrorsCount;
 
-    public void setPwErrorsCount(Integer pwErrorsCount) {
+    public UserVO(Integer id, String username, String mobile, String email, String remark, Date lastLoginTime, String token, Integer pwErrorsCount) {
+        this.id = id;
+        this.username = username;
+        this.mobile = mobile;
+        this.email = email;
+        this.remark = remark;
+        this.lastLoginTime = lastLoginTime;
+        this.token = token;
         this.pwErrorsCount = pwErrorsCount;
     }
 
@@ -91,52 +69,28 @@ public class UserVO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getWorkNo() {
-        return workNo;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setWorkNo(String workNo) {
-        this.workNo = workNo;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getMobilephone() {
-        return mobilephone;
-    }
-
-    public void setMobilephone(String mobilephone) {
-        this.mobilephone = mobilephone;
-    }
-
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getRemark() {
@@ -147,19 +101,19 @@ public class UserVO {
         this.remark = remark;
     }
 
-    @Override
-    public String toString() {
-        return "UserVO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", workNo='" + workNo + '\'' +
-                ", mail='" + mail + '\'' +
-                ", mobilephone='" + mobilephone + '\'' +
-                ", deptId=" + deptId +
-                ", status='" + status + '\'' +
-                ", remark='" + remark + '\'' +
-                ", token='" + token + '\'' +
-                ", pwErrorsCount=" + pwErrorsCount +
-                '}';
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public Integer getPwErrorsCount() {
+        return pwErrorsCount;
+    }
+
+    public void setPwErrorsCount(Integer pwErrorsCount) {
+        this.pwErrorsCount = pwErrorsCount;
     }
 }

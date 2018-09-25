@@ -1,6 +1,6 @@
 package com.kongww.work.service;
 
-import com.kongww.work.pojo.bo.LoginResultBO;
+import com.kongww.work.pojo.bo.SysLoginResultBO;
 import com.kongww.work.pojo.entity.SysDeptDO;
 import com.kongww.work.pojo.entity.SysUserDO;
 import com.kongww.work.pojo.vo.ResultVO;
@@ -24,7 +24,7 @@ public interface SysUserService {
      * @param password
      * @return
      */
-    LoginResultBO login(String username, String password);
+    SysLoginResultBO login(String username, String password);
 
     /**
      * 通过姓名登陆
@@ -33,7 +33,7 @@ public interface SysUserService {
      * @param password
      * @return
      */
-    LoginResultBO loginByName(String name, String password);
+    SysLoginResultBO loginByName(String name, String password);
 
     /**
      * 通过学号工号登陆
@@ -42,7 +42,7 @@ public interface SysUserService {
      * @param password
      * @return
      */
-    LoginResultBO loginByWorkNo(String workNo, String password);
+    SysLoginResultBO loginByWorkNo(String workNo, String password);
 
     /**
      * 通过邮箱登陆
@@ -51,7 +51,7 @@ public interface SysUserService {
      * @param password
      * @return
      */
-    LoginResultBO loginByMail(String mail, String password);
+    SysLoginResultBO loginByMail(String mail, String password);
 
     /**
      * 通过手机号登陆
@@ -60,7 +60,7 @@ public interface SysUserService {
      * @param password
      * @return
      */
-    LoginResultBO loginByMobilephone(String mobilephone, String password);
+    SysLoginResultBO loginByMobilephone(String mobilephone, String password);
 
     /**
      * @param record
