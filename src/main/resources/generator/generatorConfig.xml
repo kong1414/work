@@ -84,7 +84,7 @@
         <!--<property name="useActualColumnNames" value="false"/>-->
         <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
         <!--</table>-->
-        <table tableName="warehouse">
+        <table tableName="product_warehouse">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="id" sqlStatement="Mysql"/>
         </table>

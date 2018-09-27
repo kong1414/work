@@ -1,19 +1,19 @@
 package com.kongww.work.pojo.bo;
 
-import com.kongww.work.pojo.vo.UserVO;
+import com.kongww.work.pojo.vo.SysUserVO;
 
 /**
  * @Description:
  * @Author: QiuGuanLin
  * @Date: 2018/9/10 22:11
  */
-public class LoginResultBO {
+public class SysLoginResultBO {
 
     private boolean success;
 
     private String msg;
 
-    private UserVO UserVO;
+    private SysUserVO sysUserVO;
 
     public boolean isSuccess() {
         return success;
@@ -31,11 +31,11 @@ public class LoginResultBO {
         this.msg = msg;
     }
 
-    public UserVO getUserVO() {
-        return UserVO;
+    public SysUserVO getSysUserVO() {
+        return sysUserVO;
     }
 
-    public void setUserVO(UserVO UserVO) {
-        this.UserVO = UserVO;
+    public void setSysUserVO(SysUserVO sysUserVO) {
+        this.sysUserVO = sysUserVO;
     }
 }

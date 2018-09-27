@@ -23,7 +23,7 @@ public class ProductDO {
     /**
      * 成本单价
      */
-    @Column(name = "`cost price`")
+    @Column(name = "cost_price")
     private Long costPrice;
 
     /**

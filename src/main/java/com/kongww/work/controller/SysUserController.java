@@ -1,15 +1,13 @@
 package com.kongww.work.controller;
 
-import com.kongww.work.pojo.bo.LoginResultBO;
-import com.kongww.work.pojo.entity.SysUserDO;
-import com.kongww.work.pojo.request.LoginRequest;
+import com.kongww.work.pojo.bo.SysLoginResultBO;
+import com.kongww.work.pojo.request.SysLoginRequest;
 import com.kongww.work.pojo.request.UserSaveRequest;
 import com.kongww.work.pojo.vo.HttpCodeEnum;
 import com.kongww.work.pojo.vo.LoginType;
 import com.kongww.work.pojo.vo.ResultVO;
-import com.kongww.work.pojo.vo.UserVO;
+import com.kongww.work.pojo.vo.SysUserVO;
 import com.kongww.work.service.SysUserService;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * @Author: QiuGuanLin
@@ -81,9 +78,9 @@ public class SysUserController {
      * @return
      */
     @RequestMapping(value = "/login")
-    public ResultVO login(@RequestBody LoginRequest loginRequest) {
+    public ResultVO login(@RequestBody SysLoginRequest loginRequest) {
         ResultVO result = null;
-        LoginResultBO res = null;
+        SysLoginResultBO res = null;
 
         if (loginRequest.getLoginType() == LoginType.LoginByAllType.getCode()) {
             res = sysUserService.loginByWorkNo(loginRequest.getAccount(), loginRequest.getPassword());
@@ -98,9 +95,9 @@ public class SysUserController {
         }
 
         if (res.isSuccess()) {
-            result = new ResultVO<UserVO>(HttpCodeEnum.REQUEST_SUCCESS.getCode(), res.getUserVO(), "登陆成功");
+            result = new ResultVO<SysUserVO>(HttpCodeEnum.REQUEST_SUCCESS.getCode(), res.getSysUserVO(), "登陆成功");
         } else {
-            result = new ResultVO<UserVO>(HttpCodeEnum.REQUEST_FAIL.getCode(), res.getUserVO(), "账户或密码错误");
+            result = new ResultVO<SysUserVO>(HttpCodeEnum.REQUEST_FAIL.getCode(), res.getSysUserVO(), "账户或密码错误");
         }
 
         return result;
