@@ -18,7 +18,7 @@ public class RoleDO {
     private String name;
 
     /**
-     * 角色的类型：0，用户 1，管理员角色，2：销售管理员，3，仓库管理员
+     * 角色的类型：0，用户 1，超级管理员，2，超级管理员，3：销售管理员，4，仓库管理员
      */
     private Integer type;
 

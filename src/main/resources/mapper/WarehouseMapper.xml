@@ -19,10 +19,11 @@
         <include refid="Base_Column_List"/>
         from
         warehouse
-        <if test="keyword != null and keyword != '' "/>
-        where
-        name like '%keyword%' or
-        address like '%keyword%' or
-        remark like '%keyword%' or
+        <if test="keyword != null and keyword != '' ">
+            where
+            name like '%keyword%' or
+            address like '%keyword%' or
+            remark like '%keyword%'
+        </if>
     </select>
 </mapper>

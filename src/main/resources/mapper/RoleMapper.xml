@@ -15,4 +15,17 @@
         <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
         <result column="user_modified" jdbcType="VARCHAR" property="userModified"/>
     </resultMap>
+    <sql id="Base_Column_List">
+		id,name,type,status,remark,gmt_create,user_cteate,gmt_modified,user_modified
+	</sql>
+    <select id="list" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from role
+        <if test="keyword != null and keyword != '' ">
+            where
+            name like '%keyword%' or
+            remark like '%keyword%'
+        </if>
+    </select>
 </mapper>
