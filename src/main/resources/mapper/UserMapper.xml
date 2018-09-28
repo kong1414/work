@@ -22,10 +22,11 @@
         select
         id,username,password,mobile,email,remark,last_login_time,token,pw_errors_count
         from user
-        where
-          username like '%${account}%' or
-          mobile like '%${account}%' or
-          email like '%${account}%'
+        where (
+          username like concat('%',#{account},'%') or
+          mobile like concat('%',#{account},'%') or
+          email like concat('%',#{account},'%')
+          )
     </select>
 
     <select id="checkRepeat" parameterType="java.lang.String" resultType="java.lang.Integer">
@@ -33,9 +34,9 @@
         count(1)
         from user
         where
-          username = #{account}% or
-          mobile = #{account} or
-          email = %#{account}%
+          username = concat('%',#{account},'%') or
+          mobile = concat('%',#{account},'%') or
+          email = concat('%',#{account},'%')
     </select>
 
     <select id="list" parameterType="java.lang.String" resultType="com.kongww.work.pojo.vo.UserVO">
@@ -44,9 +45,9 @@
         from user
         <if test="keyWord != null and keyWord != '' ">
             where (
-            username like '%${keyWord}%' or
-            mobile like '%${keyWord}%' or
-            email like '%${keyWord}%'
+            username like concat('%',#{keyword},'%') or
+            mobile like concat('%',#{keyword},'%') or
+            email like concat('%',#{keyword},'%')
             )
         </if>
     </select>
@@ -57,20 +58,20 @@
         FROM
           user
         WHERE
-          username LIKE '%${keyword}%'
+          user.`username` LIKE '%${keyword}%'
         UNION
           SELECT
             email account
           FROM
             user
           WHERE
-          email LIKE '%${keyword}%'
+            user.`email` LIKE '%${keyword}%'
         UNION
           SELECT
             mobile account
           FROM
             user
           WHERE
-            mobile LIKE '%${keyword}%'
+            user.`mobile` LIKE '%${keyword}%'
     </select>
 </mapper>

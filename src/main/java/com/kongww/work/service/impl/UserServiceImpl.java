@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
         boolean isSuccess = false;
 
         UserDO user = userMapper.getUserVO(loginRequest.getAccount());
-
+        System.out.println(user);
         if (user == null) {
             result.setSuccess(isSuccess);
             result.setMsg("用户不存在");
@@ -104,10 +104,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResultVO queryList(String keyword) {
-        if ("".equals(keyword)) {
+        if ("".equals(keyword) || keyword == null) {
             new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "");
         }
         List<String> list = userMapper.selectAccount(keyword);
+        System.out.println(list.toString());
         return new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), list, "");
     }
 }

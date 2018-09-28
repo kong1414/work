@@ -25,13 +25,12 @@ public class WarehouseController {
     /**
      * 新增仓库
      *
-     * @param warehouseDO
+     * @param record
      * @return
      */
     @RequestMapping("/create")
-    public ResultVO<Object> create(@RequestParam WarehouseDO warehouseDO) {
-
-        return warehouseService.create(warehouseDO);
+    public ResultVO<Object> create(@RequestBody WarehouseDO record) {
+        return warehouseService.create(record);
     }
 
     /**
@@ -41,7 +40,7 @@ public class WarehouseController {
      * @return
      */
     @RequestMapping("/delete")
-    public ResultVO<Object> delete(Integer id) {
+    public ResultVO<Object> delete(@RequestParam Integer id) {
 
         return warehouseService.delete(id);
     }
@@ -50,16 +49,15 @@ public class WarehouseController {
      * 更新仓库信息
      * id不为空
      *
-     * @param warehouseDO 仓库信息请求
+     * @param record 仓库信息请求
      * @return
      */
     @RequestMapping("/update")
-    public ResultVO<Object> update(@RequestParam WarehouseDO warehouseDO) {
-        if (warehouseDO.getId() == null || warehouseDO.getId() == 0) {
+    public ResultVO<Object> update(@RequestBody WarehouseDO record) {
+        if (record.getId() == null || record.getId() == 0) {
             return new ResultVO<>(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "出错");
         }
-
-        return warehouseService.update(warehouseDO);
+        return warehouseService.update(record);
     }
 
     /**

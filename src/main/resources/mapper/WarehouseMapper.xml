@@ -21,9 +21,9 @@
         warehouse
         <if test="keyword != null and keyword != '' ">
             where
-            name like '%${keyword,jdbcType=VARCHAR}%' or
-            address like '%${keyword,jdbcType=VARCHAR}%' or
-            remark like '%${keyword,jdbcType=VARCHAR}%'
+            name like concat('%',#{keyword},'%') or
+            address like concat('%',#{keyword},'%') or
+            remark like concat('%',#{keyword},'%')
         </if>
     </select>
 </mapper>

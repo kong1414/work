@@ -1,7 +1,7 @@
 package com.kongww.work.pojo.entity;
 
-import java.util.Date;
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "role")
 public class RoleDO {
@@ -18,7 +18,7 @@ public class RoleDO {
     private String name;
 
     /**
-     * 角色的类型：0，用户 1，超级管理员，2，超级管理员，3：销售管理员，4，仓库管理员
+     * 角色的类型：0，用户 1，超级管理员，2，普通管理员，3：销售管理员，4，仓库管理员
      */
     private Integer type;
 

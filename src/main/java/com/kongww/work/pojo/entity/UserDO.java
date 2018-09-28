@@ -1,7 +1,7 @@
 package com.kongww.work.pojo.entity;
 
-import java.util.Date;
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "user")
 public class UserDO {
@@ -234,5 +234,22 @@ public class UserDO {
      */
     public void setPwErrorsCount(Integer pwErrorsCount) {
         this.pwErrorsCount = pwErrorsCount;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDO{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", remark='" + remark + '\'' +
+                ", lastLoginTime=" + lastLoginTime +
+                ", token='" + token + '\'' +
+                ", tokenTakeEffectTime=" + tokenTakeEffectTime +
+                ", tokenAge=" + tokenAge +
+                ", pwErrorsCount=" + pwErrorsCount +
+                '}';
     }
 }
