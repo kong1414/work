@@ -1,6 +1,7 @@
 package com.kongww.work.mapper;
 
 import com.kongww.work.pojo.entity.RoleDO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -14,5 +15,5 @@ public interface RoleMapper extends Mapper<RoleDO> {
      * @param keyword 关键字
      * @return
      */
-    List<RoleDO> list(String keyword);
+    List<RoleDO> list(@Param("keyword") String keyword);
 }

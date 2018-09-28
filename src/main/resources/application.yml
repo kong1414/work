@@ -37,6 +37,8 @@ spring:
             metadata-allow: true # metadata会暴露数据的表结构 应该为false比较安全
         config:
           enabled: true
+        log4j:
+          connection-log-enabled: true
       stat-view-servlet:
         enabled: true
         login-username: admin
@@ -64,3 +66,5 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+

@@ -33,9 +33,9 @@
         count(1)
         from user
         where
-          username = ${account}% or
-          mobile = ${account} or
-          email = %${account}%
+          username = #{account}% or
+          mobile = #{account} or
+          email = %#{account}%
     </select>
 
     <select id="list" parameterType="java.lang.String" resultType="com.kongww.work.pojo.vo.UserVO">

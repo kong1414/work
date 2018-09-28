@@ -4,10 +4,7 @@ import com.kongww.work.pojo.entity.RoleDO;
 import com.kongww.work.pojo.vo.ResultVO;
 import com.kongww.work.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -65,9 +62,9 @@ public class RoleController {
      * @return
      */
     @RequestMapping("/list")
-    public ResultVO<Object> list(String keyword) {
+    public ResultVO<Object> list(@RequestParam(defaultValue = "") String keyword) {
+        System.out.println(keyword.toString());
         return roleService.list(keyword);
     }
-
 
 }

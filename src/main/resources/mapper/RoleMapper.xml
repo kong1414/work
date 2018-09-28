@@ -24,8 +24,8 @@
         from role
         <if test="keyword != null and keyword != '' ">
             where
-            name like '%keyword%' or
-            remark like '%keyword%'
+            name like '%${keyword}%' or
+            remark like '%${keyword}%'
         </if>
     </select>
 </mapper>
