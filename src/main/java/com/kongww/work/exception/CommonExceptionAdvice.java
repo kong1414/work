@@ -1,6 +1,5 @@
-package com.kongww.work.controller;
+package com.kongww.work.exception;
 
-import com.aliyun.oss.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
@@ -27,7 +26,7 @@ import java.util.Set;
 
 /**
  * @Author: QiuGuanLin
- * @Description:
+ * @Description: 通用异常处理类
  * @Date: 23:06 2018/9/28
  */
 @ControllerAdvice
