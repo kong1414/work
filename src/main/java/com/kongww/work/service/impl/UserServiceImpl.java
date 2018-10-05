@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResultVO queryList(String keyword) {
         if ("".equals(keyword) || keyword == null) {
-            new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "");
+            return new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "");
         }
         List<String> list = userMapper.selectAccount(keyword);
         System.out.println(list.toString());
