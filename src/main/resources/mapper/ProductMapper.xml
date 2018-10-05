@@ -11,9 +11,33 @@
         <result column="detail" jdbcType="VARCHAR" property="detail"/>
         <result column="cost_price" jdbcType="DECIMAL" property="costPrice"/>
         <result column="unit_price" jdbcType="DECIMAL" property="unitPrice"/>
-        <result column="quantity" jdbcType="INTEGER" property="quantity"/>
         <result column="classify" jdbcType="VARCHAR" property="classify"/>
-        <result column="warehouse_id" jdbcType="INTEGER" property="warehouseId"/>
-        <result column="warehouse_name" jdbcType="VARCHAR" property="warehouseName"/>
     </resultMap>
+    <sql id="Base_Column_List">
+		id,name,description,detail,cost_price,unit_price,classify
+	</sql>
+    <select id="list" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        product
+        <if test="keyword != null and keyword != '' ">
+            where
+            name like concat('%',#{keyword},'%') or
+            description like concat('%',#{keyword},'%')
+        </if>
+    </select>
+
+    <select id="listByName" parameterType="java.lang.String" resultType="java.util.HashMap">
+        select
+        id,name
+        from
+        product
+        <if test="keyword != null and keyword != '' ">
+            where
+            name like concat('%',#{keyword},'%')
+        </if>
+    </select>
+
+
 </mapper>

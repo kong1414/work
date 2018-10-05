@@ -10,4 +10,46 @@
         <result column="warehouse_id" jdbcType="INTEGER" property="warehouseId"/>
         <result column="quantity" jdbcType="INTEGER" property="quantity"/>
     </resultMap>
+
+    <select id="listByWarehouseId" resultType="com.kongww.work.pojo.vo.StockVO">
+
+        SELECT
+        product_warehouse.id AS id,
+        product.id AS productId,
+        product.`name` AS productName,
+        product_warehouse.quantity,
+        product.classify,
+        warehouse.id AS warehouseId,
+        warehouse.`name` AS warehouseName
+        FROM
+        product_warehouse
+        INNER JOIN product ON product_warehouse.product_id = product.id
+        INNER JOIN warehouse ON product_warehouse.warehouse_id = warehouse.id
+        WHERE
+        product_warehouse.warehouse_id = #{warehouseId}
+        <if test="keyword != null and keyword != '' ">
+            AND
+            product.`name` like concat('%',#{keyword},'%')
+        </if>
+    </select>
+
+    <select id="checkInStock" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select
+        count(1)
+        from
+        product_warehouse
+        where
+        product_id = #{productId}
+    </select>
+
+    <delete id="deleteProduct">
+        DELETE FROM product_warehouse WHERE product_id = #{productId} AND warehouse_id = #{warehouseId}
+    </delete>
+
+    <update id="modifyQuantity">
+        UPDATE
+        product_warehouse
+        SET quantity = #{quantity}
+        WHERE product_id = #{productId} AND warehouse_id = #{warehouseId}
+    </update>
 </mapper>

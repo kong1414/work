@@ -33,26 +33,9 @@ public class ProductDO {
     private Long unitPrice;
 
     /**
-     * 数量
-     */
-    private Integer quantity;
-
-    /**
      * 分类（原材料在制品产成品）
      */
     private String classify;
-
-    /**
-     * 仓库id
-     */
-    @Column(name = "warehouse_id")
-    private Integer warehouseId;
-
-    /**
-     * 仓库名字
-     */
-    @Column(name = "warehouse_name")
-    private String warehouseName;
 
     /**
      * @return id
@@ -155,24 +138,6 @@ public class ProductDO {
     }
 
     /**
-     * 获取数量
-     *
-     * @return quantity - 数量
-     */
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    /**
-     * 设置数量
-     *
-     * @param quantity 数量
-     */
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    /**
      * 获取分类（原材料在制品产成品）
      *
      * @return classify - 分类（原材料在制品产成品）
@@ -188,41 +153,5 @@ public class ProductDO {
      */
     public void setClassify(String classify) {
         this.classify = classify == null ? null : classify.trim();
-    }
-
-    /**
-     * 获取仓库id
-     *
-     * @return warehouse_id - 仓库id
-     */
-    public Integer getWarehouseId() {
-        return warehouseId;
-    }
-
-    /**
-     * 设置仓库id
-     *
-     * @param warehouseId 仓库id
-     */
-    public void setWarehouseId(Integer warehouseId) {
-        this.warehouseId = warehouseId;
-    }
-
-    /**
-     * 获取仓库名字
-     *
-     * @return warehouse_name - 仓库名字
-     */
-    public String getWarehouseName() {
-        return warehouseName;
-    }
-
-    /**
-     * 设置仓库名字
-     *
-     * @param warehouseName 仓库名字
-     */
-    public void setWarehouseName(String warehouseName) {
-        this.warehouseName = warehouseName == null ? null : warehouseName.trim();
     }
 }

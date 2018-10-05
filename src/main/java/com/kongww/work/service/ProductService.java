@@ -1,6 +1,6 @@
 package com.kongww.work.service;
 
-import com.kongww.work.pojo.vo.ProductVO;
+import com.kongww.work.pojo.entity.ProductDO;
 import com.kongww.work.pojo.vo.ResultVO;
 
 /**
@@ -12,33 +12,45 @@ public interface ProductService {
 
     /**
      * 新增产品
-     *
+     * @param record
      * @return
      */
-    ResultVO create();
+    ResultVO create(ProductDO record);
 
 
     /**
      * 删除产品
-     *
-     * @param product_id
-     * @param warehouse_id
+     * 如果产品存在于仓库中 应提示不能删除
+     * @param id
      * @return
      */
-    ResultVO delete(Integer product_id, Integer warehouse_id);
+    ResultVO delete(Integer id);
 
     /**
-     * 更新产品
-     *
+     * 更新产品信息
+     * @param record
      * @return
      */
-    ResultVO update();
-
+    ResultVO update(ProductDO record);
 
     /**
-     * @param warehouse_id
+     * 列出所有产品
+     * 支持查询
      * @param keyword
      * @return
      */
-    ResultVO list(Integer warehouse_id, String keyword);
+    ResultVO list(String keyword);
+
+
+    /**
+     * 列出所有产品 通过名字查询
+     *
+     * @param keyword
+     * @return
+     */
+    ResultVO listByName(String keyword);
+
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.kongww.work.pojo.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Table(name = "product_warehouse")
 public class ProductWarehouseDO {
@@ -14,6 +15,7 @@ public class ProductWarehouseDO {
     @Column(name = "warehouse_id")
     private Integer warehouseId;
 
+    @Min(0)
     private Integer quantity;
 
     /**
