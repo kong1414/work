@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * @Author: QiuGuanLin
  * @Description: 仓库与产品的关联关系
@@ -30,9 +32,9 @@ public class ProductWarehouseController {
      * @return
      */
     @RequestMapping("/create")
-    public ResultVO create(@RequestBody ProductWarehouseDO record) {
+    public ResultVO create(@RequestBody @Valid ProductWarehouseDO record) {
         if (record.getQuantity() < 1) {
-            return new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "参数错误");
+            return new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "数量必须为正数");
         }
         return productWarehouseService.create(record);
     }
@@ -54,9 +56,9 @@ public class ProductWarehouseController {
      * @return
      */
     @RequestMapping("/update")
-    public ResultVO update(@RequestBody ProductWarehouseDO record) {
+    public ResultVO update(@RequestBody @Valid ProductWarehouseDO record) {
         if (record.getQuantity() < 1) {
-            return new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "参数错误");
+            return new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "数量必须为正数");
         }
         return productWarehouseService.update(record);
     }

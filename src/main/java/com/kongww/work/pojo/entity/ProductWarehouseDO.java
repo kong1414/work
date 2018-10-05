@@ -15,7 +15,7 @@ public class ProductWarehouseDO {
     @Column(name = "warehouse_id")
     private Integer warehouseId;
 
-    @Min(0)
+    @Min(1)
     private Integer quantity;
 
     /**

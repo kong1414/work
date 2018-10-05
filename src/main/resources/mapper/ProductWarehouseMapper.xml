@@ -35,7 +35,7 @@
 
     <select id="checkInStock" parameterType="java.lang.Integer" resultType="java.lang.Integer">
         select
-        count(1)
+        count(*)
         from
         product_warehouse
         where

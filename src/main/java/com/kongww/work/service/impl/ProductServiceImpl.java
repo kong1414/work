@@ -3,13 +3,11 @@ package com.kongww.work.service.impl;
 import com.kongww.work.mapper.ProductMapper;
 import com.kongww.work.mapper.ProductWarehouseMapper;
 import com.kongww.work.pojo.entity.ProductDO;
-import com.kongww.work.pojo.entity.ProductWarehouseDO;
 import com.kongww.work.pojo.vo.HttpCodeEnum;
 import com.kongww.work.pojo.vo.ResultVO;
 import com.kongww.work.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 import java.util.Map;
@@ -38,8 +36,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ResultVO delete(Integer id) {
         Integer count = productWarehouseMapper.checkInStock(id);
+        System.out.println(count);
         if (count > 0) {
-            new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "尚有库存，无法删除");
+            return new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "尚有库存，无法删除");
         } else {
             productMapper.deleteByPrimaryKey(id);
         }
