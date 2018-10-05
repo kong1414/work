@@ -1,6 +1,7 @@
 package com.kongww.work.controller;
 
 import com.kongww.work.pojo.entity.ProductWarehouseDO;
+import com.kongww.work.pojo.vo.HttpCodeEnum;
 import com.kongww.work.pojo.vo.ResultVO;
 import com.kongww.work.service.ProductWarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class ProductWarehouseController {
      */
     @RequestMapping("/create")
     public ResultVO create(@RequestBody ProductWarehouseDO record) {
+        if (record.getQuantity() < 1) {
+            return new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "参数错误");
+        }
         return productWarehouseService.create(record);
     }
 
@@ -51,6 +55,9 @@ public class ProductWarehouseController {
      */
     @RequestMapping("/update")
     public ResultVO update(@RequestBody ProductWarehouseDO record) {
+        if (record.getQuantity() < 1) {
+            return new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "参数错误");
+        }
         return productWarehouseService.update(record);
     }
 
