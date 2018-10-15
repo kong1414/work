@@ -1,5 +1,7 @@
 package com.kongww.work.pojo.request;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * @Author: QiuGuanLin
  * @Description:
@@ -10,12 +12,30 @@ public class RegisterRequest {
     /**
      * 用户名
      */
+    @NotBlank(message = "用户名不能为空")
     private String username;
 
     /**
      * 密码
      */
+    @NotBlank(message = "密码不能为空")
     private String password;
+
+    /**
+     * 手机号
+     */
+    @NotBlank()
+    private String mobile = "";
+
+    /**
+     * 电子邮箱
+     */
+    private String email = "";
+
+    /**
+     * 备注
+     */
+    private String remark = "";
 
     public String getUsername() {
         return username;
@@ -31,5 +51,29 @@ public class RegisterRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

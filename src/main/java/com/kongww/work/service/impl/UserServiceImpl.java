@@ -2,6 +2,7 @@ package com.kongww.work.service.impl;
 
 import com.kongww.work.mapper.UserMapper;
 import com.kongww.work.pojo.bo.LoginResultBO;
+import com.kongww.work.pojo.dto.UserDTO;
 import com.kongww.work.pojo.entity.UserDO;
 import com.kongww.work.pojo.request.LoginRequest;
 import com.kongww.work.pojo.request.RegisterRequest;
@@ -35,6 +36,9 @@ public class UserServiceImpl implements UserService {
         UserDO userDO = new UserDO();
         userDO.setUsername(record.getUsername());
         userDO.setPassword(record.getPassword());
+        userDO.setMobile(record.getMobile());
+        userDO.setEmail(record.getEmail());
+        userDO.setRemark(record.getRemark());
         userMapper.insertSelective(userDO);
         return new ResultVO<>(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "创建成功");
     }
@@ -44,7 +48,7 @@ public class UserServiceImpl implements UserService {
         LoginResultBO result = new LoginResultBO();
         boolean isSuccess = false;
 
-        UserDO user = userMapper.getUserVO(loginRequest.getAccount());
+        UserDO user = userMapper.getUserVOByAccount(loginRequest.getAccount());
         System.out.println(user);
         if (user == null) {
             result.setSuccess(isSuccess);
@@ -59,16 +63,19 @@ public class UserServiceImpl implements UserService {
             result.setMsg("登陆成功");
             UserVO userVO = new UserVO(user.getId(), user.getUsername(), user.getMobile(), user.getEmail(), user.getRemark(), user.getLastLoginTime(), user.getToken(), user.getPwErrorsCount());
 
+
             // 设置token
+            UserVO usertoken = userVO;
             Map<String, Object> claims = new HashMap<String, Object>();
-            claims.put(Gloal.TOKEN_USER_INFO_KEY, userVO);
+            usertoken.setToken("");
+            // 将其token设为空，防止token太长存不进数据库
+            claims.put(Gloal.TOKEN_USER_INFO_KEY, usertoken);
             String token = JWTUtil.createJavaWebToken(claims);
             userVO.setToken(token);
             result.setUserVO(userVO);
 
             // 更新数据库
             UserDO updateUser = new UserDO();
-            updateUser.setId(user.getId());
             updateUser.setId(user.getId());
             updateUser.setToken(token);
             updateUser.setTokenTakeEffectTime(new Date());
@@ -86,19 +93,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public ResultVO resetPassword(Integer id) {
+        UserDO record = new UserDO();
+        record.setId(id);
+        record.setPassword("ea48576f30be1669971699c09ad05c94");
+        return new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "重置成功");
+    }
+
+    @Override
     public ResultVO delete(Integer id) {
         userMapper.deleteByPrimaryKey(id);
         return new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "删除成功");
     }
 
     @Override
-    public ResultVO disable(Integer id) {
-        return null;
-    }
-
-    @Override
     public ResultVO list(String keyword) {
-        List<UserVO> list = userMapper.list(keyword);
+        List<UserDTO> list = userMapper.list(keyword);
         return new ResultVO(HttpCodeEnum.REQUEST_SUCCESS.getCode(), list, "");
     }
 

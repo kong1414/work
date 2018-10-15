@@ -17,15 +17,25 @@
         <result column="token_age" jdbcType="INTEGER" property="tokenAge"/>
         <result column="pw_errors_count" jdbcType="INTEGER" property="pwErrorsCount"/>
     </resultMap>
+    <resultMap id="UserDTOResultMap" type="com.kongww.work.pojo.dto.UserDTO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+        <result column="pw_errors_count" jdbcType="INTEGER" property="pwErrorsCount"/>
+    </resultMap>
 
-    <select id="getUserVO" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="getUserVOByAccount" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         id,username,password,mobile,email,remark,last_login_time,token,pw_errors_count
         from user
         where (
-          username like concat('%',#{account},'%') or
-          mobile like concat('%',#{account},'%') or
-          email like concat('%',#{account},'%')
+          username like #{account} or
+          mobile like #{account} or
+          email like #{account}
           )
     </select>
 
@@ -39,11 +49,11 @@
           email = concat('%',#{account},'%')
     </select>
 
-    <select id="list" parameterType="java.lang.String" resultType="com.kongww.work.pojo.vo.UserVO">
+    <select id="list" parameterType="java.lang.String" resultMap="UserDTOResultMap">
         select
-        id,username,mobile,email,remark,last_login_time,token,pw_errors_count
+        id,username,mobile,email,remark,last_login_time,pw_errors_count
         from user
-        <if test="keyWord != null and keyWord != '' ">
+        <if test="keyword != null and keyword != '' ">
             where (
             username like concat('%',#{keyword},'%') or
             mobile like concat('%',#{keyword},'%') or

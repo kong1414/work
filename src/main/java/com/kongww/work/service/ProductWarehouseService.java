@@ -37,4 +37,12 @@ public interface ProductWarehouseService {
      * @return
      */
     ResultVO listByWarehouseId(Integer warehouseId, String keyword);
+
+    /**
+     * 记录 入库产品信息
+     *
+     * @param record
+     * @return
+     */
+    ResultVO record(ProductWarehouseDO record);
 }

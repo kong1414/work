@@ -1,8 +1,7 @@
 package com.kongww.work.mapper;
 
+import com.kongww.work.pojo.dto.UserDTO;
 import com.kongww.work.pojo.entity.UserDO;
-import com.kongww.work.pojo.vo.UserVO;
-import jdk.nashorn.internal.ir.RuntimeNode;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
@@ -18,7 +17,7 @@ public interface UserMapper extends Mapper<UserDO> {
      * @param account
      * @return
      */
-    UserDO getUserVO(@Param("account") String account);
+    UserDO getUserVOByAccount(@Param("account") String account);
 
     /**
      * 检查是否存在重复的
@@ -35,7 +34,7 @@ public interface UserMapper extends Mapper<UserDO> {
      * @param keyword
      * @return
      */
-    public List<UserVO> list(@Param("keyword") String keyword);
+    public List<UserDTO> list(@Param("keyword") String keyword);
 
     /**
      * 搜索能作为账户名字的字段

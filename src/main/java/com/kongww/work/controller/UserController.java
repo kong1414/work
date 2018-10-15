@@ -1,11 +1,11 @@
 package com.kongww.work.controller;
 
 import com.kongww.work.pojo.bo.LoginResultBO;
+import com.kongww.work.pojo.entity.UserDO;
 import com.kongww.work.pojo.request.LoginRequest;
 import com.kongww.work.pojo.request.RegisterRequest;
 import com.kongww.work.pojo.vo.HttpCodeEnum;
 import com.kongww.work.pojo.vo.ResultVO;
-import com.kongww.work.pojo.vo.SysUserVO;
 import com.kongww.work.pojo.vo.UserVO;
 import com.kongww.work.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Date: 21:25 2018/9/24
  */
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
@@ -77,8 +77,19 @@ public class UserController {
      * @return
      */
     @RequestMapping("/list")
-    public ResultVO<Object> list(@RequestParam String keyword) {
+    public ResultVO<Object> list(@RequestParam(defaultValue = "") String keyword) {
         return userService.list(keyword);
+    }
+
+    /**
+     * 列出用户
+     *
+     * @param record
+     * @return
+     */
+    @RequestMapping("/create")
+    public ResultVO<Object> create(@RequestBody RegisterRequest record) {
+        return userService.create(record);
     }
 
     /**
@@ -87,8 +98,28 @@ public class UserController {
      * @return
      */
     @RequestMapping("/update")
-    public ResultVO<Object> update() {
-        return null;
+    public ResultVO<Object> update(@RequestParam Integer id,
+                                   @RequestParam String username,
+                                   @RequestParam(defaultValue = "") String mobile,
+                                   @RequestParam(defaultValue = "") String email,
+                                   @RequestParam(defaultValue = "") String remark) {
+        UserDO record = new UserDO();
+        record.setId(id);
+        record.setUsername(username);
+        record.setMobile(mobile);
+        record.setEmail(email);
+        record.setRemark(remark);
+        return userService.update(record);
+    }
+
+    /**
+     * 更新用户
+     *
+     * @return
+     */
+    @RequestMapping("/reset")
+    public ResultVO<Object> update(@RequestParam Integer id) {
+        return userService.resetPassword(id);
     }
 
     /**
@@ -98,7 +129,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("/delete")
-    public ResultVO delete(@RequestParam Integer id) {
+    public ResultVO reset(@RequestParam Integer id) {
         return userService.delete(id);
     }
 

@@ -1,19 +1,16 @@
-package com.kongww.work.pojo.vo;
+package com.kongww.work.pojo.dto;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.Column;
 import java.util.Date;
 
 /**
  * @Author: QiuGuanLin
  * @Description:
- * @Date: 8:52 2018/9/25
+ * @Date: 15:12 2018/10/8
  */
-public class UserVO {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SELECT LAST_INSERT_ID()")
+public class UserDTO {
     private Integer id;
 
     /**
@@ -39,33 +36,15 @@ public class UserVO {
     /**
      * 最后一次登录时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @Column(name = "last_login_time")
     private Date lastLoginTime;
-
-    private String token;
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     /**
      * 密码错误次数
      */
+    @Column(name = "pw_errors_count")
     private Integer pwErrorsCount;
-
-    public UserVO(Integer id, String username, String mobile, String email, String remark, Date lastLoginTime, String token, Integer pwErrorsCount) {
-        this.id = id;
-        this.username = username;
-        this.mobile = mobile;
-        this.email = email;
-        this.remark = remark;
-        this.lastLoginTime = lastLoginTime;
-        this.token = token;
-        this.pwErrorsCount = pwErrorsCount;
-    }
 
     public Integer getId() {
         return id;

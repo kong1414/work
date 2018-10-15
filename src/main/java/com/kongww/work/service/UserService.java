@@ -33,21 +33,19 @@ public interface UserService {
     ResultVO update(UserDO record);
 
     /**
+     * 重置密码
+     * @param id
+     * @return
+     */
+    ResultVO resetPassword(Integer id);
+
+    /**
      * 删除用户
      *
      * @param id
      * @return
      */
     ResultVO delete(Integer id);
-
-
-    /**
-     * 禁用用户
-     *
-     * @param id
-     * @return
-     */
-    ResultVO disable(Integer id);
 
     /**
      * 列出用户

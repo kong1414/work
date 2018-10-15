@@ -17,4 +17,20 @@
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
     </resultMap>
+
+    <sql id="Base_Column_List">
+		id,product_id,product_name,warehouse_id,warehouse_name,unit_price,quantity,purchase_time,user_id,user_name,remark
+	</sql>
+    <select id="list" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from stock_list
+        <if test="keyword != null and keyword != '' ">
+            where
+            product_name like concat('%',#{keyword},'%') or
+            warehouse_name like concat('%',#{keyword},'%') or
+            user_name like concat('%',#{keyword},'%') or
+            remark like concat('%',#{keyword},'%')
+        </if>
+    </select>
 </mapper>
