@@ -84,4 +84,16 @@
           WHERE
             user.`mobile` LIKE '%${keyword}%'
     </select>
+
+    <update id="updateTokenDisabled">
+        update user
+        <set>
+            token = null,
+            token_take_effect_time = null,
+            token_age = null
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
 </mapper>

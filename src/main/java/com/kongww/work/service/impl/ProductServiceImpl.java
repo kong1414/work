@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ResultVO delete(Integer id) {
         Integer count = productWarehouseMapper.checkInStock(id);
-        System.out.println(count);
+        // System.out.println(count);
         if (count > 0) {
             return new ResultVO(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "尚有库存，无法删除");
         } else {

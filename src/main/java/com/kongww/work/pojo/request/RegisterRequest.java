@@ -24,7 +24,6 @@ public class RegisterRequest {
     /**
      * 手机号
      */
-    @NotBlank()
     private String mobile = "";
 
     /**

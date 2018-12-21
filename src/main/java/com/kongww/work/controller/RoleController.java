@@ -66,7 +66,7 @@ public class RoleController {
      */
     @RequestMapping("/list")
     public ResultVO<Object> list(@RequestParam(defaultValue = "") String keyword) {
-        System.out.println(keyword.toString());
+        // System.out.println(keyword.toString());
         return roleService.list(keyword);
     }
 

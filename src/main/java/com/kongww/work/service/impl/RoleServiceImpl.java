@@ -36,7 +36,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public ResultVO<Object> update(RoleDO record) {
         int i = roleMapper.updateByPrimaryKeySelective(record);
-        System.out.println(i);
+        // System.out.println(i);
         return new ResultVO<>(HttpCodeEnum.REQUEST_SUCCESS.getCode(), null, "更新成功");
     }
 

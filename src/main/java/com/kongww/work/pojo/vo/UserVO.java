@@ -43,6 +43,14 @@ public class UserVO {
 
     private String token;
 
+    /**
+     * 密码错误次数
+     */
+    private Integer pwErrorsCount;
+
+    public UserVO() {
+    }
+
     public String getToken() {
         return token;
     }
@@ -50,11 +58,6 @@ public class UserVO {
     public void setToken(String token) {
         this.token = token;
     }
-
-    /**
-     * 密码错误次数
-     */
-    private Integer pwErrorsCount;
 
     public UserVO(Integer id, String username, String mobile, String email, String remark, Date lastLoginTime, String token, Integer pwErrorsCount) {
         this.id = id;

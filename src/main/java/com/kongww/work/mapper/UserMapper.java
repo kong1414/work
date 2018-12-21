@@ -43,4 +43,12 @@ public interface UserMapper extends Mapper<UserDO> {
      * @return
      */
     public List<String> selectAccount(@Param("keyword") String keyword);
+
+    /**
+     * 设置token无效
+     *
+     * @param id
+     * @return
+     */
+    int updateTokenDisabled(Integer id);
 }

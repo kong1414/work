@@ -4,10 +4,12 @@ import com.kongww.work.pojo.bo.LoginResultBO;
 import com.kongww.work.pojo.entity.UserDO;
 import com.kongww.work.pojo.request.LoginRequest;
 import com.kongww.work.pojo.request.RegisterRequest;
+import com.kongww.work.pojo.request.UserUpdatePass;
 import com.kongww.work.pojo.vo.HttpCodeEnum;
 import com.kongww.work.pojo.vo.ResultVO;
 import com.kongww.work.pojo.vo.UserVO;
 import com.kongww.work.service.UserService;
+import com.kongww.work.util.Gloal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 /**
  * @Author: QiuGuanLin
@@ -57,7 +60,13 @@ public class UserController {
      */
     @RequestMapping(value = "/logout")
     public ResultVO<Object> logout(Integer userId, HttpServletRequest req) {
-        return null;
+        ResultVO<Object> result = null;
+        try {
+            result = userService.logout(userId, req.getHeader(Gloal.REQUEST_HEADER_TOKEN_KEY));
+        } catch (IllegalArgumentException | NoSuchMethodException | SecurityException e) {
+            return new ResultVO<Object>(HttpCodeEnum.REQUEST_FAIL.getCode(), null, "");
+        }
+        return result;
     }
 
     /**
@@ -66,7 +75,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("/register")
-    public ResultVO<Object> register(@RequestParam RegisterRequest registerRequest) {
+    public ResultVO<Object> register(@Valid @RequestBody RegisterRequest registerRequest) {
         return userService.create(registerRequest);
     }
 
@@ -82,7 +91,7 @@ public class UserController {
     }
 
     /**
-     * 列出用户
+     * 新增用户
      *
      * @param record
      * @return
@@ -113,7 +122,7 @@ public class UserController {
     }
 
     /**
-     * 更新用户
+     * 重置用户密码
      *
      * @return
      */
@@ -142,6 +151,26 @@ public class UserController {
     @RequestMapping("/queryList")
     public ResultVO<Object> queryList(@RequestParam(defaultValue = "") String keyword) {
         return userService.queryList(keyword);
+    }
+
+    /**
+     * 登陆页查询账户是否重复
+     *
+     * @param keyword
+     * @return
+     */
+    @RequestMapping("/checkName")
+    public ResultVO<Object> checkName(@RequestParam(defaultValue = "") String keyword) {
+        return userService.checkName(keyword);
+    }
+
+    /**
+     * 修改密码接口
+     */
+
+    @RequestMapping("/updatePassword")
+    public ResultVO<Object> updatePass(HttpServletRequest request, @RequestBody UserUpdatePass userUpdatePass) {
+        return userService.updatePass(request, userUpdatePass.getOldPass(), userUpdatePass.getNewPass());
     }
 
 }

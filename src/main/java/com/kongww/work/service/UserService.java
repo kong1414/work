@@ -6,6 +6,8 @@ import com.kongww.work.pojo.request.LoginRequest;
 import com.kongww.work.pojo.request.RegisterRequest;
 import com.kongww.work.pojo.vo.ResultVO;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @Author: QiuGuanLin
  * @Description: 用户模块的业务处理
@@ -62,4 +64,50 @@ public interface UserService {
      * @return
      */
     ResultVO queryList(String keyword);
+
+    /**
+     * 通过token值来查找用户
+     *
+     * @param token
+     * @return
+     */
+    UserDO getByToken(String token);
+
+    /**
+     * 检查用户名是否冲突
+     *
+     * @param keyword
+     * @return
+     */
+    ResultVO<Object> checkName(String keyword);
+
+    /**
+     * 刷新token
+     *
+     * @param id
+     * @return
+     */
+    ResultVO<Object> refreshToken(Integer id);
+
+    /**
+     * 用户登出操作
+     *
+     * @param id
+     * @param token
+     * @return
+     * @throws SecurityException
+     * @throws NoSuchMethodException
+     * @throws IllegalArgumentException
+     */
+    ResultVO<Object> logout(Integer id, String token) throws IllegalArgumentException, NoSuchMethodException, SecurityException;
+
+    /**
+     * 更新密码
+     *
+     * @param request
+     * @param oldPass
+     * @param newPass
+     * @return
+     */
+    ResultVO<Object> updatePass(HttpServletRequest request, String oldPass, String newPass);
 }
