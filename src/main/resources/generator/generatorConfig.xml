@@ -67,6 +67,12 @@
                              type="XMLMAPPER"/>
 
         <!-- table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 -->
+
+        <table tableName="dictionary">
+            <property name="useActualColumnNames" value="false"/>
+            <!-- 数据库表主键 -->
+            <generatedKey column="pk_id" sqlStatement="Mysql"/>
+        </table>
         <!--<table tableName="acl">-->
         <!--<property name="useActualColumnNames" value="false"/>-->
         <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
@@ -80,10 +86,10 @@
         <!--<property name="useActualColumnNames" value="false"/>-->
         <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
         <!--</table>-->
-        <table tableName="order_list">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql"/>
-        </table>
+        <!--<table tableName="order_list">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
         <!--<table tableName="product_warehouse">-->
         <!--<property name="useActualColumnNames" value="false"/>-->
         <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
@@ -92,15 +98,15 @@
         <!--<property name="useActualColumnNames" value="false"/>-->
         <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
         <!--</table>-->
-        <table tableName="stock_list">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql"/>
-        </table>
-        S
-        <table tableName="product">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql"/>
-        </table>
+        <!--<table tableName="stock_list">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
+        <!--S-->
+        <!--<table tableName="product">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<generatedKey column="id" sqlStatement="Mysql"/>-->
+        <!--</table>-->
         <!--<table tableName="role">-->
         <!--<property name="useActualColumnNames" value="false"/>-->
         <!--<generatedKey column="id" sqltatement="Mysql"/>-->

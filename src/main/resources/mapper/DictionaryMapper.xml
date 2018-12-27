@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kongww.work.mapper.DictionaryMapper">
+    <resultMap id="BaseResultMap" type="com.kongww.work.pojo.entity.DictionaryDO">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="pk_id" jdbcType="INTEGER" property="id"/>
+        <result column="fk_parent" jdbcType="INTEGER" property="parentId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="tag" jdbcType="VARCHAR" property="tag"/>
+        <result column="comment" jdbcType="VARCHAR" property="comment"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="user_create" jdbcType="VARCHAR" property="userCreate"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="user_modified" jdbcType="VARCHAR" property="userModified"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="enabled" jdbcType="BIT" property="enabled"/>
+        <result column="display" jdbcType="BIT" property="display"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="category" jdbcType="VARCHAR" property="category"/>
+        <result column="allow_child" jdbcType="BIT" property="allowChild"/>
+    </resultMap>
+    <resultMap id="BaseResultMapTree" extends="BaseResultMap" type="com.kongww.work.pojo.entity.DictionaryDO">
+        <collection property="childrenList" column="{parentId=pk_id,category=category,allowChild=allow_child}"
+                    ofType="com.kongww.work.pojo.entity.DictionaryDO" select="listChildren"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ${tableName}
+        .
+        pk_id
+        ${
+        columnPrefix
+        }
+        pk_id
+        ,
+        ${tableName}
+        .
+        fk_parent
+        ${
+        columnPrefix
+        }
+        fk_parent,
+        ${tableName}
+        .
+        name
+        ${
+        columnPrefix
+        }
+        name,
+        ${tableName}
+        .
+        tag
+        ${
+        columnPrefix
+        }
+        tag,
+        ${tableName}
+        .
+        `comment`
+        ${columnPrefix}
+        `comment`,
+        ${tableName}
+        .
+        sort
+        ${
+        columnPrefix
+        }
+        sort,
+        ${tableName}
+        .
+        user_create
+        ${
+        columnPrefix
+        }
+        user_create,
+        ${tableName}
+        .
+        gmt_create
+        ${
+        columnPrefix
+        }
+        gmt_create,
+        ${tableName}
+        .
+        user_modified
+        ${
+        columnPrefix
+        }
+        user_modified,
+        ${tableName}
+        .
+        gmt_modified
+        ${
+        columnPrefix
+        }
+        gmt_modified,
+        ${tableName}
+        .
+        enabled
+        ${
+        columnPrefix
+        }
+        enabled,
+        ${tableName}
+        .
+        display
+        ${
+        columnPrefix
+        }
+        display,
+        ${tableName}
+        .
+        level
+        ${
+        columnPrefix
+        }
+        level,
+        ${tableName}
+        .
+        category
+        ${
+        columnPrefix
+        }
+        category,
+        ${tableName}
+        .
+        allow_child
+        ${
+        columnPrefix
+        }
+        allow_child
+    </sql>
+
+    <sql id="SQL_Base">
+        select
+        <include refid="Base_Column_List">
+            <property name="tableName" value="dictionary"/>
+            <property name="columnPrefix" value=""/>
+        </include>
+        from
+        dictionary
+        where
+        enabled = 1
+    </sql>
+
+
+    <select id="listChildren" resultMap="BaseResultMapTree">
+        <include refid="SQL_Base"/>
+        <choose>
+            <when test="parentId != null and allowChild">
+                and fk_parent = #{parentId,jdbcType=INTEGER}
+                and category = #{category,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and 1 = 0
+            </otherwise>
+        </choose>
+        order by
+        sort asc,
+        gmt_create asc
+    </select>
+
+    <select id="listDisplay" resultMap="BaseResultMapTree">
+        <include refid="SQL_Base"/>
+        and display = 1
+        and fk_parent is null
+        order by
+        gmt_create asc
+    </select>
+</mapper>
