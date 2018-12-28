@@ -11,6 +11,7 @@ import com.kongww.work.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -23,7 +24,7 @@ import java.util.Map;
  * @Description: 过滤器测试
  * @Date: 0:28 2018/9/25
  */
-// @WebFilter(filterName = "myFilter", urlPatterns = "/*")
+@WebFilter(filterName = "myFilter", urlPatterns = "/*")
 public class SessionFilter implements Filter {
 
     @Autowired
